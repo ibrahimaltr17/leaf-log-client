@@ -1,10 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../components/Header/Navbar';
+import './Root.css'
 
 const Root = () => {
     return (
-        <div>
+        <div className='m-plus-rounded-1c'>
             <Navbar></Navbar>
             <div>
                 <Outlet></Outlet>
