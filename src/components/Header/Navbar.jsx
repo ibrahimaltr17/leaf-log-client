@@ -9,8 +9,8 @@ import './Navbar.css'
 const Navbar = () => {
     const links = <>
         <NavLink className='hover:text-[#ffeb6b]' to="/">Home</NavLink>
-        <NavLink className='hover:text-[#ffeb6b]' to="/bookedEvent">All Plants</NavLink>
-        <NavLink className='hover:text-[#ffeb6b]' to="/about">Add Plant</NavLink>
+        <NavLink className='hover:text-[#ffeb6b]' to="/allPlant">All Plants</NavLink>
+        <NavLink className='hover:text-[#ffeb6b]' to="/addPlant">Add Plant</NavLink>
         <NavLink className='hover:text-[#ffeb6b]' to="/error">My Plants</NavLink>
     </>
     // const { user, logOut } = useContext(AuthContext)

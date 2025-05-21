@@ -1,0 +1,13 @@
+table td{
+    padding: 16px;
+}
+table th{
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+}
+table td p{
+    text-align: center;
+    font-weight: 600;
+    color: #0E2954;
+}
