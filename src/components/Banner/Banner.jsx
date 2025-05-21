@@ -18,7 +18,7 @@ const Banner = () => {
                             <p className="mb-5 text-xs px-12 md:px-0 md:text-sm lg:px-0 lg:text-lg">
                                 Track watering, fertilizing, and more — all in one place. LeafLog keeps your plants healthy and happy.
                             </p>
-                            <button className="btn btn-primary">Book Now</button>
+                            <button className="btn btn-primary bg-green-950">Explore More</button>
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ const Banner = () => {
                             <p className="mb-5 text-xs px-12 md:px-0 md:text-sm lg:px-0 lg:text-lg">
                                 From reminders to progress logs, manage your plant routine with a touch of nature and a dash of tech.
                             </p>
-                            <button className="btn btn-primary">Book Now</button>
+                            <button className="btn btn-primary bg-green-950">Explore More</button>
                         </div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ const Banner = () => {
                             <p className="mb-5 text-xs px-12 md:px-0 md:text-sm lg:px-0 lg:text-lg">
                                 Whether you’re a beginner or a plant pro, LeafLog helps you take the guesswork out of plant care.
                             </p>
-                            <button className="btn btn-primary">Book Now</button>
+                            <button className="btn btn-primary bg-green-950">Explore More</button>
                         </div>
                     </div>
                 </div>
