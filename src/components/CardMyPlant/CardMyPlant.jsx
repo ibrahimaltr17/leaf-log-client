@@ -2,9 +2,43 @@ import React from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import Swal from 'sweetalert2';
 
-const CardMyPlant = ({plantsData}) => {
-    const {photo,plant,category,health,careLevel}=plantsData
+const CardMyPlant = ({ plantsData }) => {
+    const { _id, photo, plant, category, health, careLevel } = plantsData;
+
+    const handleDelete = (_id) => {
+        console.log(_id)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            console.log(result.isConfirmed)
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:3000/plants/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Plant has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+
+            }
+        });
+    }
     return (
         <div className='flex justify-between items-center flex-col md:flex-row space-y-3 rounded-3xl bg-white p-4'>
             <div>
@@ -19,7 +53,7 @@ const CardMyPlant = ({plantsData}) => {
             <div className='flex md:flex-col px-2 gap-2'>
                 <button className='btn bg-green-800 text-white'><FaEye /></button>
                 <button className='btn bg-gray-800 text-white'><FaEdit /></button>
-                <button className='btn bg-red-600 text-white'><MdDelete /></button>
+                <button onClick={() => handleDelete(_id)} className='btn bg-red-600 text-white'><MdDelete /></button>
             </div>
         </div>
     );
