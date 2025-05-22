@@ -4,6 +4,7 @@ import Error from "../pages/Error/Error";
 import Home from "../pages/Home/Home";
 import AllPlants from "../pages/AllPlants/AllPlants";
 import AddPlant from "../pages/AddPlant/AddPlant";
+import PlantDetails from "../pages/PlantDetails/PlantDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
           path: "addPlant",
           Component: AddPlant
+        },
+        {
+          path: "plantDetails",
+          Component: PlantDetails
         }
     ]
   },

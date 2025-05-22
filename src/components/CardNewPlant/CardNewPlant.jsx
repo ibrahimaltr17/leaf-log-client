@@ -30,7 +30,7 @@ const CardNewPlant = () => {
                     </div>
                 </div>
                 <div className="w-full">
-                    <button className='btn w-full rounded-4xl bg-green-950 text-white font-medium'>View Details</button>
+                    <button className='btn w-full rounded-4xl bg-green-950 text-white font-medium'>Plant Details</button>
                 </div>
             </div>
         </div>
