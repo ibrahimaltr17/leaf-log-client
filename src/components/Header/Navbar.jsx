@@ -11,7 +11,7 @@ const Navbar = () => {
         <NavLink className='hover:text-[#60d349]' to="/">Home</NavLink>
         <NavLink className='hover:text-[#60d349]' to="/allPlant">All Plants</NavLink>
         <NavLink className='hover:text-[#60d349]' to="/addPlant">Add Plant</NavLink>
-        <NavLink className='hover:text-[#60d349]' to="/error">My Plants</NavLink>
+        <NavLink className='hover:text-[#60d349]' to="/myPlant">My Plants</NavLink>
     </>
     // const { user, logOut } = useContext(AuthContext)
 

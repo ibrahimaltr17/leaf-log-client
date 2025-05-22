@@ -1,8 +1,11 @@
 import React from 'react';
 import Banner from '../../components/Banner/Banner';
 import CardNewPlant from '../../components/CardNewPlant/CardNewPlant';
+import { useLoaderData } from 'react-router';
 
 const Home = () => {
+    const plants = useLoaderData()
+    console.log(plants)
     return (
         <>
         <Banner></Banner>
@@ -13,12 +16,9 @@ const Home = () => {
                 </div>
                 {/* New Plant Container */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                    <CardNewPlant></CardNewPlant>
-                    <CardNewPlant></CardNewPlant>
-                    <CardNewPlant></CardNewPlant>
-                    <CardNewPlant></CardNewPlant>
-                    <CardNewPlant></CardNewPlant>
-                    <CardNewPlant></CardNewPlant>
+                    {
+                        plants.map(plant=> <CardNewPlant key={plant._id} plantData={plant}></CardNewPlant>)
+                    }
                 </div>
             </section>
         </div>

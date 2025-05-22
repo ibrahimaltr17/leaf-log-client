@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import AllPlants from "../pages/AllPlants/AllPlants";
 import AddPlant from "../pages/AddPlant/AddPlant";
 import PlantDetails from "../pages/PlantDetails/PlantDetails";
+import MyPlants from "../pages/MyPlants/MyPlants";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
         {
             index: true,
             path: "/",
+            loader: ()=> fetch('http://localhost:3000/plants'),
             Component: Home
         },
         {
@@ -24,6 +26,10 @@ const router = createBrowserRouter([
         {
           path: "addPlant",
           Component: AddPlant
+        },
+        {
+          path: "myPlant",
+          Component: MyPlants
         },
         {
           path: "plantDetails",
