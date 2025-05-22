@@ -5,6 +5,10 @@ const AddPlant = () => {
 
   return (
     <div className='max-w-10/12 mx-auto py-16 space-y-10'>
+      <div className='text-center space-y-5 px-10'>
+        <h3 className='text-2xl font-bold text-green-950'>Add Plant</h3>
+        <p className=''>Fill out the form below to start tracking your plant's care. Make sure to include as many details as possible to get personalized care reminders.</p>
+      </div>
       <div>
         <form>
           <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
@@ -66,7 +70,7 @@ const AddPlant = () => {
             <textarea className="textarea h-24 w-full" placeholder="Description"></textarea>
           </fieldset>
           <div className='px-4'>
-            <input type="submit" className='btn w-full  bg-green-950 text-white' value="Add Coffee" />
+            <input type="submit" className='btn w-full  bg-green-950 text-white' value="Add Plant" />
           </div>
         </form>
       </div>
