@@ -2,9 +2,10 @@ import React from 'react';
 import { FaEye } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
-const CardMyPlant = ({ plantsData }) => {
+const CardMyPlant = ({ plantsData, plants, setPlants }) => {
     const { _id, photo, plant, category, health, careLevel } = plantsData;
 
     const handleDelete = (_id) => {
@@ -32,6 +33,9 @@ const CardMyPlant = ({ plantsData }) => {
                                 text: "Your Plant has been deleted.",
                                 icon: "success"
                             });
+
+                            const remainingPlants = plants.filter(plan => plan._id !== _id);
+                            setPlants(remainingPlants);
                         }
                     })
 
@@ -52,7 +56,9 @@ const CardMyPlant = ({ plantsData }) => {
             </div>
             <div className='flex md:flex-col px-2 gap-2'>
                 <button className='btn bg-green-800 text-white'><FaEye /></button>
+                <Link to={`/updatePlant/${_id}`}>
                 <button className='btn bg-gray-800 text-white'><FaEdit /></button>
+                </Link>
                 <button onClick={() => handleDelete(_id)} className='btn bg-red-600 text-white'><MdDelete /></button>
             </div>
         </div>
