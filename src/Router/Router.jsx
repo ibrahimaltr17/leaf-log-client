@@ -9,6 +9,7 @@ import MyPlants from "../pages/MyPlants/MyPlants";
 import UpdatePlant from "../pages/UpadatePlant/UpdatePlant";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Users from "../pages/Users/Users";
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: "login",
         Component: Login
+      },
+      {
+        path: 'users',
+        loader: ()=> fetch('https://server-leaf-log.vercel.app/users'),
+        Component: Users
       }
     ]
   },
