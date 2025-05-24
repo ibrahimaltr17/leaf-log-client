@@ -3,8 +3,8 @@ import CardMyPlant from '../../components/CardMyPlant/CardMyPlant';
 import { useLoaderData } from 'react-router';
 
 const MyPlants = () => {
-    const InitialPlants=useLoaderData();
-    const [plants, setPlants]=useState(InitialPlants)
+    const initialPlants=useLoaderData();
+    const [plants, setPlants]=useState(initialPlants)
 
     return (
         <div className='w-11/12 mx-auto space-y-10 pt-20'>

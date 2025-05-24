@@ -16,9 +16,7 @@ const Home = () => {
                 </div>
                 {/* New Plant Container */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
-                    {
-                        plants.map(plant=> <CardNewPlant key={plant._id} plantData={plant}></CardNewPlant>)
-                    }
+                    <CardNewPlant></CardNewPlant>
                 </div>
             </section>
         </div>

@@ -4,10 +4,10 @@ import { PiSpeedometer } from "react-icons/pi";
 import { GiWateringCan } from "react-icons/gi";
 
 const CardNewPlant = ({plantData}) => {
-    const {photo,plant,category,health,waterFrequency,careLevel}=plantData
+    // const {photo,plant,category,health,waterFrequency,careLevel}=plantData
     return (
         <div className="card bg-base-100 shadow-sm">
-            <figure>
+            {/* <figure>
                 <img 
                     className=''
                     src={photo}
@@ -32,7 +32,7 @@ const CardNewPlant = ({plantData}) => {
                 <div className="w-full">
                     <button className='btn w-full rounded-4xl bg-green-950 text-white font-medium'>Plant Details</button>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

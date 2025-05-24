@@ -22,7 +22,7 @@ const CardMyPlant = ({ plantsData, plants, setPlants }) => {
             console.log(result.isConfirmed)
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:3000/plants/${_id}`, {
+                fetch(`https://server-leaf-log.vercel.app/plants/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
