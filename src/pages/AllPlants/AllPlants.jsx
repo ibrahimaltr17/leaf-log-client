@@ -1,8 +1,12 @@
 import React from 'react';
-import plant from '../../assets/plant.jpg'
 import './AllPlant.css'
+import { useLoaderData } from 'react-router';
+import PlantRow from '../../components/PlantRow/PlantRow';
 
 const AllPlants = () => {
+    const plants=useLoaderData()
+    console.log(plants)
+
     return (
         <div className='max-w-10/12 mx-auto py-16 space-y-10'>
             <div>
@@ -18,21 +22,11 @@ const AllPlants = () => {
                     </tr>
                 </thead>
                 <tbody className='divide-y divide-gray-200 p-3'>
-                    <tr>
-                        <td className=''>
-                            <div className='flex gap-4'>
-                                <img src={plant} alt="" className='w-[52px] h-[52px] rounded-sm' />
-                                <p className='text-left'>Very good plant</p>
-                            </div>
-                        </td>
-                        <td><p>Showpiece</p></td>
-                        <td><p>3 time</p></td>
-                        <td className='text-center'>
-                            <button className='px-3 py-2 bg-green-950 text-white rounded-3xl'>
-                                View Details
-                            </button>
-                        </td>
-                    </tr>
+                    {
+                        plants.map((plant, index) => (
+                <PlantRow key={index} plant={plant} />
+              ))
+                    }
                 </tbody>
             </table>
         </div>

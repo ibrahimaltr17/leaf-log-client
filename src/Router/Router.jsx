@@ -10,6 +10,7 @@ import UpdatePlant from "../pages/UpadatePlant/UpdatePlant";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import Users from "../pages/Users/Users";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -25,33 +26,40 @@ const router = createBrowserRouter([
       },
       {
         path: "allPlant",
+        loader: () => fetch('https://server-leaf-log.vercel.app/plants'),
         Component: AllPlants
       },
       {
         path: "addPlant",
-        Component: AddPlant
+        element: <PrivateRoute>
+          <AddPlant></AddPlant>
+        </PrivateRoute>
       },
       {
         path: "myPlant",
         loader: () => fetch('https://server-leaf-log.vercel.app/plants'),
-        Component: MyPlants
+        element: <PrivateRoute>
+          <MyPlants></MyPlants>
+        </PrivateRoute>
       },
       {
         path: "plants/:id",
-        Component: PlantDetails
+        loader: ({ params }) => fetch(`https://server-leaf-log.vercel.app/plants/${params.id}`),
+        element: <PrivateRoute>
+          <PlantDetails></PlantDetails>
+        </PrivateRoute>
       },
       {
         path: "updatePlant/:id",
         loader: ({ params }) => fetch(`https://server-leaf-log.vercel.app/plants/${params.id}`),
-        Component: UpdatePlant
-      },
-      {
-        path: "login",
-        Component: Login
+        Component: UpdatePlant,
+        element: <PrivateRoute>
+          <UpdatePlant></UpdatePlant>
+        </PrivateRoute>
       },
       {
         path: 'users',
-        loader: ()=> fetch('https://server-leaf-log.vercel.app/users'),
+        loader: () => fetch('https://server-leaf-log.vercel.app/users'),
         Component: Users
       }
     ]
@@ -59,6 +67,10 @@ const router = createBrowserRouter([
   {
     path: "signup",
     Component: Register
+  },
+  {
+    path: "login",
+    Component: Login
   }
 ]);
 

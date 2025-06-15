@@ -55,9 +55,12 @@ const CardMyPlant = ({ plantsData, plants, setPlants }) => {
                 <p><span className='font-semibold'>Health Status: </span>{health}</p>
             </div>
             <div className='flex md:flex-col px-2 gap-2'>
-                <button className='btn bg-green-800 text-white'><FaEye /></button>
+                <Link to={`/plants/${_id}`}>
+                    <button className='btn bg-green-800 text-white'><FaEye /></button>
+                </Link>
+
                 <Link to={`/updatePlant/${_id}`}>
-                <button className='btn bg-gray-800 text-white'><FaEdit /></button>
+                    <button className='btn bg-gray-800 text-white'><FaEdit /></button>
                 </Link>
                 <button onClick={() => handleDelete(_id)} className='btn bg-red-600 text-white'><MdDelete /></button>
             </div>

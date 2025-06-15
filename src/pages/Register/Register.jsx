@@ -1,12 +1,14 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import { FaEye } from "react-icons/fa";
 import google from '../../assets/google.png';
 import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
-    const { createUser } = use(AuthContext);
+    const { createUser } = useContext(AuthContext);
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -23,38 +25,42 @@ const Register = () => {
         createUser(email, password)
             .then(result => {
                 console.log('Firebase user:', result.user);
+                updateProfile(result.user, {
+                    displayName: name,
+                    photoURL: photo
+                }).then(() => {
+                    const userProfile = {
+                        email,
+                        name,
+                        photo,
+                        creationTime: result.user?.metadata?.creationTime,
+                        lastSignInTime: result.user?.metadata?.lastSignInTime
+                    };
 
-                const userProfile = {
-                    email,
-                    name,
-                    photo,
-                    creationTime: result.user?.metadata?.creationTime,
-                    lastSignInTime: result.user?.metadata?.lastSignInTime
-                };
+                    console.log('User profile to save:', userProfile);
 
-                console.log('User profile to save:', userProfile);
-
-                fetch('https://server-leaf-log.vercel.app/users', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(userProfile)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log("After profile save:", data);
-                        if (data.insertedId || data.acknowledged) {
-                            Swal.fire({
-                                position: "top-end",
-                                icon: "success",
-                                title: "Your account is created.",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            form.reset();
-                        }
+                    fetch('https://server-leaf-log.vercel.app/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(userProfile)
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log("After profile save:", data);
+                            if (data.insertedId || data.acknowledged) {
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "Your account is created.",
+                                    showConfirmButton: false,
+                                    timer: 800
+                                });
+                                form.reset();
+                            }
+                        });
+                });
             })
             .catch((error) => {
                 console.error('Error creating user:', error);
@@ -62,7 +68,8 @@ const Register = () => {
     };
 
     return (
-        <div className='bg-green-900 h-screen lg:flex'>
+        <div className='bg-green-900 h-screen lg:flex relative'>
+            <Link to="/"><button className='btn btn-circle absolute right-4 top-4'>X</button></Link>
             <div className='w-5/12 hidden lg:block h-screen px-5 text-white text-center'>
                 <div className='lg:flex h-full flex-col items-center justify-center'>
                     <h1 className='text-5xl font-bold text-center my-auto'>Join us today! It only takes a few seconds.</h1>
@@ -73,20 +80,20 @@ const Register = () => {
                     <h3 className='text-2xl font-bold lg:text-3xl text-center my-3'>Register Now</h3>
                     <form onSubmit={handleSignUp}>
                         <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="Name" required />
+                        <input type="text" name='name' className="input text-black" placeholder="Name" required /><br />
 
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" required />
+                        <input type="email" name='email' className="input text-black" placeholder="Email" required /><br />
 
                         <label className="label">Photo URL</label>
-                        <input type="text" name='photo' className="input" placeholder="Photo URL" />
+                        <input type="text" name='photo' className="input text-black" placeholder="Photo URL" /><br />
 
                         <label className="label">Password</label>
-                        <div className='relative'>
+                        <div className='relative text-black'>
                             <input
                                 type='password'
                                 name='password'
-                                className="input w-full"
+                                className="input w-full text-black"
                                 placeholder="Password"
                                 minLength="6"
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
@@ -106,7 +113,7 @@ const Register = () => {
                     </form>
 
                     <p className='mt-3'>
-                        Already have an account? <span className='text-blue-500'>Login</span>
+                        Already have an account? <Link to="/login" className='text-blue-500'>Login</Link>
                     </p>
 
                     <div className="divider text-white lg:text-black">OR</div>

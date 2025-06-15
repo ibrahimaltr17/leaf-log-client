@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import logo from '../../assets/logo.png'
 import './Navbar.css'
-// import { AuthContext } from '../../Provider/AuthProvider';
-// import { BsThreeDotsVertical } from "react-icons/bs";
-// import { showError, showWarning } from '../../utility/sweetAlert2';
+import { showError, showWarning } from '../../utility/sweetAlert';
+import { AuthContext } from '../../context/AuthContext';
+import { BsThreeDotsVertical } from 'react-icons/bs';
+
 
 const Navbar = () => {
     const links = <>
@@ -13,16 +14,16 @@ const Navbar = () => {
         <NavLink className='hover:text-[#60d349]' to="/addPlant">Add Plant</NavLink>
         <NavLink className='hover:text-[#60d349]' to="/myPlant">My Plants</NavLink>
     </>
-    // const { user, logOut } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
-    // const handleLogOut = () => {
-    //     logOut().then(() => {
-    //         showWarning('Logged Out Successfully', 'See you again soon!')
-    //     }).catch((error) => {
-    //         showError(error)
-    //     });
+    const handleLogOut = () => {
+        logOut().then(() => {
+            showWarning('Logged Out Successfully', 'See you again soon!')
+        }).catch((error) => {
+            showError(error)
+        });
 
-    // }
+    }
 
     return (
         <div className="navbar w-full bg-[#568100]">
@@ -50,13 +51,13 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3">
-                <div>
+                {/* <Link to="/login">
                     <button className="btn bg-green-900 text-white">Login</button>
-                </div>
-                {/* <div className="dropdown dropdown-hover dropdown-left dropdown-center">
+                </Link> */}
+                <div className="dropdown dropdown-hover dropdown-left dropdown-center">
                     {
                         user ? <div className="avatar max-w-8">
-                            <div className="ring-primary ring-offset-base-100 w-12s rounded-full ring-2 ring-offset-2">
+                            <div className="ring-primary bg-white ring-offset-base-100 w-12s rounded-full ring-2 ring-offset-2">
                                 <img src={user.photoURL ? user.photoURL :
                                     "https://img.icons8.com/?size=48&id=84020&format=png"
                                 } />
@@ -71,8 +72,8 @@ const Navbar = () => {
                             {user.displayName}
                         </p>
                     )}
-                </div> */}
-                {/* {
+                </div>
+                {
                     user ?
 
                         <div className='dropdown dropdown-end'>
@@ -88,12 +89,12 @@ const Navbar = () => {
                 {
                     user ?
                         <Link to="/">
-                            <button onClick={handleLogOut} className="btn bg-amber-900 text-white">LogOut</button>
+                            <button onClick={handleLogOut} className="btn bg-green-900 text-white">LogOut</button>
                         </Link>
                         : <Link to="/login">
-                            <button className="btn bg-amber-900 text-white">Login</button>
+                            <button className="btn bg-green-900 text-white">Login</button>
                         </Link>
-                } */}
+                }
 
             </div>
 

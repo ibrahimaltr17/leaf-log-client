@@ -2,37 +2,44 @@ import React from 'react';
 import { MdCategory } from "react-icons/md";
 import { PiSpeedometer } from "react-icons/pi";
 import { GiWateringCan } from "react-icons/gi";
+import { Link } from 'react-router';
 
-const CardNewPlant = ({plantData}) => {
-    // const {photo,plant,category,health,waterFrequency,careLevel}=plantData
+const CardNewPlant = ({ plantData }) => {
+    console.log(plantData)
+    //   const { photo, plant, category, health, waterFrequency, careLevel } = plantData;
+
     return (
-        <div className="card bg-base-100 shadow-sm">
-            {/* <figure>
-                <img 
-                    className=''
-                    src={photo}
-                    alt="Shoes" />
+        <div className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow duration-200 rounded-xl">
+            <figure>
+                <img
+                    className="w-full h-48 object-cover rounded-t-xl"
+                    src={plantData.photo}
+                    alt=""
+                />
             </figure>
-            <div className="card-body">
-                <h2 className="card-title">
-                    {plant}
-                    <div className="badge badge-secondary">{careLevel}</div>
+            <div className="card-body space-y-3">
+                <h2 className="card-title justify-between items-center">
+                    {plantData.plant}
+                    <span className="badge badge-secondary text-xs">{plantData.careLevel}</span>
                 </h2>
-                <div className=''>
-                    <div className='flex gap-2 items-center'>
-                        <MdCategory /> {category}
+
+                <div className="space-y-1 text-sm text-gray-600">
+                    <div className="flex items-center gap-2">
+                        <MdCategory className="text-lg" /> {plantData.category}
                     </div>
-                    <div className='flex gap-2 items-center'>
-                        <PiSpeedometer /> {health}
+                    <div className="flex items-center gap-2">
+                        <PiSpeedometer className="text-lg" /> {plantData.health}
                     </div>
-                    <div className='flex gap-2 items-center'>
-                        <GiWateringCan /> {waterFrequency}
+                    <div className="flex items-center gap-2">
+                        <GiWateringCan className="text-lg" /> {plantData.waterFrequency}
                     </div>
                 </div>
-                <div className="w-full">
-                    <button className='btn w-full rounded-4xl bg-green-950 text-white font-medium'>Plant Details</button>
-                </div>
-            </div> */}
+
+                <Link to={`/plants/${plantData._id}`}><button className="btn btn-sm w-full bg-green-800 hover:bg-green-900 text-white rounded-xl">
+                    Plant Details
+                </button></Link>
+
+            </div>
         </div>
     );
 };

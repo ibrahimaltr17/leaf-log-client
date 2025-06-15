@@ -1,24 +1,69 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
+// import { GoogleAuthProvider } from 'firebase/auth/web-extension';
 
 const AuthProvider = ({ children }) => {
 
-    const createUser=(email,password)=>{
-        // setLoading(true)
-        return createUserWithEmailAndPassword(auth,email,password)
+    const [user, setUser] = useState(null);
+
+    const [loading, setLoading] = useState(true)
+
+    const createUser = (email, password) => {
+        setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
     };
 
-    const userInfo = {
-        createUser
+    const signInUser = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password);
+    };
+
+    const forgetPass = (email) => {
+        return sendPasswordResetEmail(auth, email)
     }
 
-    return (
-        <AuthContext value={userInfo}>
-            {children}
-        </AuthContext>
-    );
+
+    const providerGoogle = new GoogleAuthProvider();
+
+    const googleLogIn = () => {
+        return signInWithPopup(auth, providerGoogle);
+    };
+
+    const updateUser = (updatedData) => {
+        return updateProfile(auth.currentUser, updatedData)
+    }
+
+
+    const logOut = () => {
+        return signOut(auth)
+    }
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false)
+        })
+        return () => {
+            unsubscribe()
+        }
+    }, [])
+
+    const authData = {
+        user,
+        loading,
+        setLoading,
+        createUser,
+        signInUser,
+        forgetPass,
+        googleLogIn,
+        updateUser,
+        logOut,
+    }
+
+    return <AuthContext.Provider value={authData}>{children}</AuthContext.Provider>
 };
 
 export default AuthProvider;
