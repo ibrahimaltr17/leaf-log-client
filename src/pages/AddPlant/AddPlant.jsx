@@ -107,7 +107,7 @@ const AddPlant = () => {
 
             <fieldset className="fieldset rounded-box px-4">
               <label className="label">Next Watering Date</label>
-              <input type="date" name='nextWaterDate' className="input w-full" required />
+              <input type="date" name='nextWateringDate' className="input w-full" required />
             </fieldset>
           </div>
 

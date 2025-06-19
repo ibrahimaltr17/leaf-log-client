@@ -5,6 +5,7 @@ import './Navbar.css'
 import { showError, showWarning } from '../../utility/sweetAlert';
 import { AuthContext } from '../../context/AuthContext';
 import { BsThreeDotsVertical } from 'react-icons/bs';
+import ThemeToggle from '../../utility/ThemeToggle';
 
 
 const Navbar = () => {
@@ -51,9 +52,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end flex gap-3">
-                {/* <Link to="/login">
-                    <button className="btn bg-green-900 text-white">Login</button>
-                </Link> */}
+                {<ThemeToggle></ThemeToggle>}
                 <div className="dropdown dropdown-hover dropdown-left dropdown-center">
                     {
                         user ? <div className="avatar max-w-8">
@@ -73,19 +72,6 @@ const Navbar = () => {
                         </p>
                     )}
                 </div>
-                {
-                    user ?
-
-                        <div className='dropdown dropdown-end'>
-                            <button tabIndex={0} className='cursor-pointer'>
-                                <BsThreeDotsVertical />
-                            </button>
-                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                                <Link to="/profile"><li>View Profile</li></Link>
-                            </ul>
-                        </div>
-                        : <></>
-                }
                 {
                     user ?
                         <Link to="/">

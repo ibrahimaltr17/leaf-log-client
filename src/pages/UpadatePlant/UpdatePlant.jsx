@@ -43,11 +43,11 @@ const UpdatePlant = () => {
                     <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
                         <fieldset className="fieldset rounded-box px-4">
                             <label className="label">User Name</label>
-                            <input type="text" name='name' className="input w-full" placeholder="User Name" defaultValue={name} />
+                            <input type="text" name='name' className="input w-full" placeholder="User Name" defaultValue={name} readOnly/>
                         </fieldset>
                         <fieldset className="fieldset rounded-box px-4">
                             <label className="label">User Email</label>
-                            <input type="email" name='email' className="input w-full" placeholder="Email" defaultValue={email} />
+                            <input type="email" name='email' className="input w-full" placeholder="Email" defaultValue={email} readOnly/>
                         </fieldset>
                         <fieldset className="fieldset rounded-box px-4">
                             <label className="label">Plant Name</label>

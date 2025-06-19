@@ -3,12 +3,14 @@ import { FaEye } from "react-icons/fa";
 import google from '../../assets/google.png';
 import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router';
+import { Link, Navigate, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
 
     const { createUser } = useContext(AuthContext);
+
+    const navigate = useNavigate()
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -58,6 +60,7 @@ const Register = () => {
                                     timer: 800
                                 });
                                 form.reset();
+                                navigate('/')
                             }
                         });
                 });

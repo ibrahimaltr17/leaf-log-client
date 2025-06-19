@@ -1,12 +1,13 @@
 import React from 'react';
-import error from "../../assets/error.jpg"
 import { Link } from 'react-router';
+import Lottie from 'lottie-react';
+import Animation from '../../Animation/Animation - 1750354613310.json'
 
 const Error = () => {
     return (
         <div className='flex flex-col gap-3 items-center my-6 bg-white min-h-screen'>
-            <div>
-                <img className='w-[400px] mx-auto' src={error} alt="" />
+            <div className='w-[400px] mx-auto'>
+                <Lottie animationData={Animation} loop={true}></Lottie>
             </div>
 
             <Link to='/'>
