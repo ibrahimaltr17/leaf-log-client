@@ -44,7 +44,7 @@ const PlantDetails = () => {
                         </div>
                         <div className='p-2 rounded-md w-1/2'>
                             <p className='font-bold'>Next Watering Date</p>
-                            <p className='text-gray-600 font-semibold'>{plantData.nextWaterDate}</p>
+                            <p className='text-gray-600 font-semibold'>{plantData.nextWateringDate}</p>
                         </div>
                     </div>
                     <div className='p-2 rounded-md'>
