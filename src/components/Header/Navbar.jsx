@@ -4,7 +4,6 @@ import logo from '../../assets/logo.png'
 import './Navbar.css'
 import { showError, showWarning } from '../../utility/sweetAlert';
 import { AuthContext } from '../../context/AuthContext';
-import { BsThreeDotsVertical } from 'react-icons/bs';
 import ThemeToggle from '../../utility/ThemeToggle';
 
 

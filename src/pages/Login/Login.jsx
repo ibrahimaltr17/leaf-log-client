@@ -27,7 +27,6 @@ const Login = () => {
                     email,
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
-                // update last sign in to the database
                 fetch('https://server-leaf-log.vercel.app/users', {
                     method: 'PATCH',
                     headers: {

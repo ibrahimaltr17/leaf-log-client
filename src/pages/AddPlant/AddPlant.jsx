@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import './AddPlant.css';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../context/AuthContext'; // adjust this path if needed
+import { AuthContext } from '../../context/AuthContext';
 
 const AddPlant = () => {
   const { user } = useContext(AuthContext);

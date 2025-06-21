@@ -7,7 +7,6 @@ const AllPlants = () => {
   const plants = useLoaderData();
   const [sortType, setSortType] = useState('');
 
-  // Custom order for care level
   const careOrder = { Easy: 1, Moderate: 2, Difficult: 3 };
 
   const sortedPlants = [...plants].sort((a, b) => {
@@ -15,12 +14,11 @@ const AllPlants = () => {
       return careOrder[a.careLevel] - careOrder[b.careLevel];
     }
     if (sortType === 'nextWatering') {
-      // Convert to Date for accurate comparison
       const dateA = new Date(a.nextWateringDate);
       const dateB = new Date(b.nextWateringDate);
       return dateA - dateB;
     }
-    return 0; // default (no sorting)
+    return 0; 
   });
 
   return (
