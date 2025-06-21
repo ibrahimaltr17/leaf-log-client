@@ -5,11 +5,11 @@ import { AuthContext } from '../../context/AuthContext';
 import Swal from 'sweetalert2';
 import { Link, Navigate, useNavigate } from 'react-router';
 import { updateProfile } from 'firebase/auth';
+import { showError, showSuccess } from '../../utility/sweetAlert';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
-
+    const { createUser, googleLogIn } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const handleSignUp = (e) => {
@@ -22,11 +22,8 @@ const Register = () => {
         const name = formData.get('name') || '';
         const photo = formData.get('photo') || '';
 
-        console.log('Form Data:', { email, password, name, photo });
-
         createUser(email, password)
             .then(result => {
-                console.log('Firebase user:', result.user);
                 updateProfile(result.user, {
                     displayName: name,
                     photoURL: photo
@@ -39,8 +36,6 @@ const Register = () => {
                         lastSignInTime: result.user?.metadata?.lastSignInTime
                     };
 
-                    console.log('User profile to save:', userProfile);
-
                     fetch('https://server-leaf-log.vercel.app/users', {
                         method: 'POST',
                         headers: {
@@ -50,7 +45,6 @@ const Register = () => {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log("After profile save:", data);
                             if (data.insertedId || data.acknowledged) {
                                 Swal.fire({
                                     position: "top-end",
@@ -67,8 +61,26 @@ const Register = () => {
             })
             .catch((error) => {
                 console.error('Error creating user:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration failed',
+                    text: error.message,
+                });
             });
     };
+
+    const handleGoogleLogIn = () => {
+        googleLogIn()
+            .then(result => {
+                const user = result.user;
+                showSuccess('Login Successful!', 'Welcome back!')
+                navigate(location.state?.path || "/");
+            })
+            .catch(error => {
+                console.error("Google sign-in error:", error.message);
+                showError('Login Failed', error.message)
+            });
+    }
 
     return (
         <div className='bg-green-900 h-screen lg:flex relative'>
@@ -121,7 +133,7 @@ const Register = () => {
 
                     <div className="divider text-white lg:text-black">OR</div>
 
-                    <div className='flex justify-center rounded-md gap-1.5 cursor-pointer p-1 bg-gray-100'>
+                    <div className='flex justify-center rounded-md gap-1.5 cursor-pointer p-1 bg-gray-100' onClick={handleGoogleLogIn}>
                         <img src={google} alt="Google logo" className='w-5' />
                         <p className='text-black'>Sign in with Google</p>
                     </div>

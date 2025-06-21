@@ -11,7 +11,6 @@ const AddPlant = () => {
     const form = e.target;
     const formData = new FormData(form);
     const newPlant = Object.fromEntries(formData.entries());
-    console.log(newPlant);
 
     fetch('https://server-leaf-log.vercel.app/plants', {
       method: 'POST',

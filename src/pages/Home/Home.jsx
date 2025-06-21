@@ -13,8 +13,8 @@ const Home = () => {
       <Banner />
       <div className='max-w-11/12 mx-auto mt-20 space-y-20'>
         <ContainerNewPlant></ContainerNewPlant>
-        <Feedback></Feedback>
         <TaskToday plants={plants}></TaskToday>
+        <Feedback></Feedback>
       </div>
     </>
   );

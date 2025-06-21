@@ -19,17 +19,14 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
 
         // firebase sign in send 
         signInUser(email, password)
             .then(result => {
-                console.log(result.user)
                 const singInInfo = {
                     email,
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
-                console.log(singInInfo)
                 // update last sign in to the database
                 fetch('https://server-leaf-log.vercel.app/users', {
                     method: 'PATCH',
@@ -40,7 +37,6 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
                         showSuccess('Login Successful!', 'Welcome back!',)
                         navigate(location.state || "/");
                     })
@@ -56,7 +52,6 @@ const Login = () => {
         googleLogIn()
             .then(result => {
                 const user = result.user;
-                console.log(user)
                 showSuccess('Login Successful!', 'Welcome back!')
                 navigate(location.state?.path || "/");
             })

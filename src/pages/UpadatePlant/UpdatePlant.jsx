@@ -10,7 +10,6 @@ const UpdatePlant = () => {
         const form = e.target;
         const formData = new FormData(form);
         const updatedPlant = Object.fromEntries(formData.entries())
-        console.log(updatedPlant);
 
         fetch(`https://server-leaf-log.vercel.app/plants/${_id}`, {
             method: 'PUT',

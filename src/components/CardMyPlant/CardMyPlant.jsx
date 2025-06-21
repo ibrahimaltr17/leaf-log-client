@@ -9,7 +9,6 @@ const CardMyPlant = ({ plantsData, plants, setPlants }) => {
     const { _id, photo, plant, category, health, careLevel } = plantsData;
 
     const handleDelete = (_id) => {
-        console.log(_id)
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -19,9 +18,7 @@ const CardMyPlant = ({ plantsData, plants, setPlants }) => {
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
-            console.log(result.isConfirmed)
             if (result.isConfirmed) {
-
                 fetch(`https://server-leaf-log.vercel.app/plants/${_id}`, {
                     method: 'DELETE'
                 })

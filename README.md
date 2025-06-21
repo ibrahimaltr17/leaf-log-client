@@ -1,12 +1,25 @@
-# React + Vite
+# 🌿 LeafLog - Your Personal Plant Care Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [https://leaf-log-dc82b.web.app](https://leaf-log-dc82b.web.app)
 
-Currently, two official plugins are available:
+LeafLog is a full-stack, user-friendly web application that helps plant lovers easily manage and track their plant care routines. Whether you're tending a succulent collection or caring for tropical greens, LeafLog makes plant care simple and joyful.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔍 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✅ **Add & Track Plants** – Input plant details including watering schedules, care level, and health status.
+- 📅 **Today's Task View** – See which plants need watering today using a smart filter and built-in calendar (read-only).
+- 📝 **Personal Dashboard** – View all your added plants and update their care information anytime.
+- 🌗 **Light/Dark Theme** – Seamlessly toggle between light and dark modes for a comfortable viewing experience.
+- 🔐 **Authentication System** – Secure login and registration with personalized data per user.
+
+---
+
+## 🚀 Tech Stack
+
+- **Frontend:** React, Tailwind CSS, DaisyUI  
+- **Backend:** Express.js, MongoDB, Node.js  
+- **Deployment:** Vercel (Frontend), Render/Hosted MongoDB Atlas (Backend)
+
+
