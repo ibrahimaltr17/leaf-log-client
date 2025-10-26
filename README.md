@@ -1,25 +1,42 @@
-# 🌿 LeafLog - Your Personal Plant Care Tracker
+# LeafLog
 
-**Live Site:** [https://leaf-log-dc82b.web.app](https://leaf-log-dc82b.web.app)
-
-LeafLog is a full-stack, user-friendly web application that helps plant lovers easily manage and track their plant care routines. Whether you're tending a succulent collection or caring for tropical greens, LeafLog makes plant care simple and joyful.
+**LeafLog** is a **Plant Care Tracker Web Application** designed to help plant enthusiasts **log, track, and manage** the daily care of their houseplants. The platform offers personalized plant management features to maintain healthy plants through consistent care routines.
 
 ---
 
-## 🔍 Features
+## 🌐 Live Demo
 
-- ✅ **Add & Track Plants** – Input plant details including watering schedules, care level, and health status.
-- 📅 **Today's Task View** – See which plants need watering today using a smart filter and built-in calendar (read-only).
-- 📝 **Personal Dashboard** – View all your added plants and update their care information anytime.
-- 🌗 **Light/Dark Theme** – Seamlessly toggle between light and dark modes for a comfortable viewing experience.
-- 🔐 **Authentication System** – Secure login and registration with personalized data per user.
+- **Frontend:** [Live Link Here](https://leaf-log-dc82b.web.app/)  
 
 ---
 
-## 🚀 Tech Stack
+## 🏛 Project Overview
 
-- **Frontend:** React, Tailwind CSS, DaisyUI  
-- **Backend:** Express.js, MongoDB, Node.js  
-- **Deployment:** Vercel (Frontend), Render/Hosted MongoDB Atlas (Backend)
+LeafLog provides a centralized and user-friendly system where users can:
 
+- Organize their plant collection.  
+- Schedule care tasks like watering, fertilizing, and repotting.  
+- Monitor plant health and growth through logs and reminders.
 
+---
+
+## 👥 User Features
+
+- 🌱 **Add & Manage Plants:** Add new plants with details like name, species, and photo.  
+- 💧 **Track Care Tasks:** Log watering, fertilizing, and repotting dates.  
+- ⏰ **Set Reminders:** Get notifications or view reminders for upcoming tasks.  
+- 📊 **Health Monitoring:** Track plant growth and overall health with updates.  
+- 🔒 **User Authentication:** Secure login system to manage personalized plant data.  
+- 🧭 **Dashboard:** Centralized view of all plants and upcoming care tasks.
+
+---
+
+## 💻 Technology Stack
+
+- **Frontend:** React.js, Tailwind CSS  
+- **Backend:** Node.js, Express.js  
+- **Database:** MongoDB  
+- **Authentication:** Firebase or JWT-based authentication  
+- **Hosting & Deployment:** Vercel (frontend), Render / Netlify (backend)
+
+![LeafLog Landing Page](https://i.ibb.co/YourLandingPageImage.png)
